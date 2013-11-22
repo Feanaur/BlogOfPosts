@@ -16,6 +16,14 @@ helpers do
    time.strftime("%d %b %Y")
   end
 
+  def post_show_page?
+    request.path_info =~ /\/posts\/\d+$/
+  end
+
+  def delete_post_button(post_id)
+    erb :_delete_post_button, locals: { post_id: post_id}
+  end
+
 end
 
 get "/" do
@@ -78,7 +86,7 @@ delete "/posts/:id" do
 end
  
 # Our About Me page.
-get "/about" do
+get "/about_me" do
   @title = "About Me"
-  erb :"pages/about"
+  erb :"pages/about_me"
 end

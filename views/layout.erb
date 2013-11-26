@@ -10,9 +10,11 @@
 			<li><a href="/posts/new">New Post</a></li>                            
 			<% if post_show_page?  %>
 				<li><a href="/posts/<%= @post.id %>/edit">Edit Post</a></li>
-				<li><%= delete_post_button(@post.id) %></li>
 			<% end %>
 		</ul>
 		<%= yield %>
+		<% if post_show_page?  %>
+		<%= delete_post_button(@post.id) %>
+		<% end %>
 	</body>
 </html>

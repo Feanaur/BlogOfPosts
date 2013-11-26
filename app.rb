@@ -1,7 +1,9 @@
 require "sinatra"
 require "sinatra/activerecord"
-
-set :database, "sqlite3:///blog.db"
+#require 'rubygems'
+#require 'bundler/setup'
+#Bundler.require(:default)
+set :database, "sqlite3:///db/blog.db"
  
 class Post < ActiveRecord::Base
   validates :title, presence: true, length: { minimum: 3 }
@@ -9,7 +11,6 @@ class Post < ActiveRecord::Base
 end
 
 helpers do
-
   # Format the Ruby Time object returned from a post's created_at method
   # into a string that looks like this: 06 Jan 2012
   def pretty_date(time)

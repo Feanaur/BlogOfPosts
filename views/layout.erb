@@ -19,9 +19,6 @@
 
 		<div style="padding-top: 2%; padding-left: 2%;">
 			<%= yield %>
-			<% if post_show_page?  %>
-				<%= delete_post_button(@post.id) %>
-			<% end %>
 		</div>
 	</body>
 </html>

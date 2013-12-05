@@ -1,23 +1,23 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.body %></p>
-<p><em>written by <%= User.find(@post.user_id).name %> at <%= @post.created_at %></em></p>
+<p><em>written by <%= @post.user.name %> at <%= @post.created_at %></em></p>
 <br/>
-<% @comments.each do |comment| %>
-<div class="span7">
-	<%= comment.body %> 
-	<p><em> by <%= User.find(comment.user_id).name %> at <%= comment.created_at %> </em><p>
-</div><br/>
+<% @post.comments.each do |comment| %>
+  <div class="span7">
+    <%= comment.body %> 
+    <p><em> by <%= comment.user.name %> at <%= comment.created_at %> </em><p>
+  </div><br/>
 <% end %>
-<form class="input-append" action="/posts/<%= @post.id %>" method="post">
-    <div class="row">
-    	<div class="col-lg-3">
-		    <div class="input-group">
-		    		<input type="hidden" id="post_id" name="post_id" value="<%= @post.id %>">
-		            <input autocomplete="off" class="form-control" id="comment_body" name="comment_body" type="text" placeholder="Add your comment right here"/>  
-	      			<span class="input-group-btn">
-	            		<button id="b1" class="btn btn-default" type="submit">+</button>
-	        		</span>
-	         </div>
-		</div>	
-	</div>
+<form class="input-append" action="/posts/<%= @post.id %>/comments" method="post">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="input-group">
+        <input type="hidden" id="post_id" name="post_id" value="<%= @post.id %>">
+        <input autocomplete="off" class="form-control" id="comment_body" name="comment_body" type="text" placeholder="Add your comment right here"/>  
+        <span class="input-group-btn">
+          <button id="b1" class="btn btn-default" type="submit">+</button>
+        </span>
+      </div>
+    </div>	
+  </div>
 </form>

@@ -1,16 +1,16 @@
 require "sinatra"
 require "sinatra/activerecord"
 require "digest/md5"
-
-Dir.glob("./models/*.rb").each do |rb_file|
- 	require "#{rb_file}"
+#before filters 
+Dir.glob("./models/*.rb") do |rb_file|
+  require "#{rb_file}"
 end
 
 set :database, "sqlite3:///db/blog.sqlite3"
 set :sessions, true
 
 
-helpers do
+helpers do #вынести в отельный файл в папку /helpers
   def pretty_date(time)
    time.strftime("%d %b %Y")
   end
@@ -45,7 +45,6 @@ end
 
 get "/posts/:id" do
   @post = Post.find(params[:id])
-  @comments = Comment.where("post_id = ?", params[:id])
   erb :"posts/show"
 end
  
@@ -55,13 +54,13 @@ get "/posts/:id/edit" do
   erb :"posts/edit"
 end
 
-post "/posts/:id" do
-  @comment = Comment.new
-  @comment.body = params[:comment_body]
-  @comment.user_id = session[:cur_user].id
-  @comment.post_id = params[:id]
+post "/posts/:id/comments" do
+  @comment = Comment.new(
+    body: params[:comment_body],
+    user_id: session[:cur_user].id,
+    post_id: params[:id])
   @comment.save
-  redirect "posts/#{@comment.post_id}"
+  redirect "posts/"
 end
 
 put "/posts/:id" do
@@ -89,14 +88,18 @@ get '/register' do
 end
 
 post '/register' do
-  @user = User.new
-  @user.name = params[:username]
-  @user.password = Digest::MD5.hexdigest(params[:password])
-  @user.email = params[:email]
+  @user = User.new(
+    name: params[:username],
+    password: params[:password],
+    email: params[:email]
+    )
+  #@user.name = params[:username]
+  #@user.password = Digest::MD5.hexdigest(params[:password])
+  #@user.email = params[:email]
   if @user.save
-  	redirect "/"
+    redirect "/"
   else
-  	erb :"pages/register"
+    erb :"pages/register"
   end
 end
 
@@ -105,17 +108,19 @@ get '/auth/login' do
 end
 
 post '/auth/login' do
-  @user = User.find_by email: params[:email]
+  @user = User.find_by_email(params[:email])
   if @user && @user.password == Digest::MD5.hexdigest(params[:password])
     session[:cur_user] = @user
     redirect "/"
   else
   	#сюда надо бы как-то выплюнуть ошибку авторизации
     redirect "/auth/login"
-  end  	
+  end
 end
 
 post '/auth/logout' do
   session[:cur_user] = nil
   redirect '/'
 end
+
+## CRUD переделать порядок

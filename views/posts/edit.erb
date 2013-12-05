@@ -1,27 +1,35 @@
 <h1>Edit Post</h1>
 <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
-<script>
-        tinymce.init({selector:'textarea'});
-</script>
-	
+
 <form action="/posts/<%= @post.id %>"  class="form-horizontal" method="post">
-	<div class="col-lg-10">
-		<input type="hidden" name="_method" value="put" />
-		<div class="control-group">
-			<label for="post_title">Title:</label><br />
-			<input id="post_title" name="post[title]" class="form-control" type="text" value="<%= @post.title %>" />
-		</div>
-		<div class="control-group">
-			<label for="post_body">Body:</label><br />
-			<textarea id="post_body" name="post[body]" ><%= @post.body %></textarea>	  
-		</div>
-		</br>
-		<div class="control-group">
-			<input class="btn btn-success btn-lg" type="submit" value="Edit Post" />
-		</div>
-		<div class="control-group">		
-			<input type="hidden" name="_method" value="delete" />
-			<input class="btn btn-danger btn-lg" type="submit" value="Delete Post" />
-		</div>
-	</div>
+  <input type="hidden" name="_method" value="put" />
+  <div class="col-lg-10">
+
+    <div class="control-group">
+      <label for="post_title">Title:</label><br />
+      <input id="post_title" name="post[title]" class="form-control" type="text" value="<%= @post.title %>" />
+    </div>
+    <div class="control-group">
+      <label for="post_body">Body:</label><br />
+      <textarea id="post_body" name="post[body]" ><%= @post.body %></textarea>
+    </div>
+
+    </br>
+
+    <div class="control-group">
+      <input class="btn btn-success btn-lg" type="submit" value="Edit Post" />
+    </div>
+  </div>
 </form> 
+
+<form action="/posts/<%= @post.id %>"  class="form-horizontal" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <div class="col-lg-10">
+    <div class="control-group">
+      <input class="btn btn-danger btn-lg btn-delete" type="submit" value="Delete Post" />
+    </div>
+  </div>
+</form>
+<script>
+  tinymce.init({selector:'textarea'});
+</script>

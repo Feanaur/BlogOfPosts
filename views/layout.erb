@@ -1,27 +1,28 @@
 <html>
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<link rel="stylesheet" href="/css/bootstrap-theme.css">
-	<script src="/js/bootstrap.js"></script>
-	<head>
-		<title>My First Blog</title>
-	</head>
-	<body>
-		<div class="navbar-inner navbar-fixed-top" style="background: white;">
-			<ul class="nav nav-tabs">
-				<li><a href="/">Home</a></li>
-				<li><a href="/about_me">About Me</a></li>            
-				<li><a href="/posts/new">New Post</a></li>
-				<li><a href="/register">Rеgister</a></li>
-				<% %> 
-				<li><a href="/auth/login">Sign in</a></li>                           
-				<% if post_show_page?  %>
-					<li><a href="/posts/<%= @post.id %>/edit">Edit Post</a></li>
-				<% end %>
-			</ul>
-		</div>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <script src="/js/bootstrap.js"></script>
+  <head>
+    <title>My First Blog</title>
+  </head>
+  <body>
+    <div class="navbar-inner navbar-fixed-top" style="background: white;">
+      <ul class="nav nav-tabs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about_me">About Me</a></li>            
+        <li><a href="/posts/new">New Post</a></li>
+        <li><a href="/register">Rеgister</a></li>
+        <% %> 
+        <li><a href="/auth/login">Sign in</a></li>                           
+        <% if post_show_page?  %>
+          <li><a href="/posts/<%= @post.id %>/edit">Edit Post</a></li>
+        <% end %>
+      </ul>
+    </div>
 
-		<div style="padding-top: 2%; padding-left: 2%;">
-			<%= yield %>
-		</div>
-	</body>
+    <div style="padding-top: 2%; padding-left: 2%;">
+      <%= yield %>
+    </div>
+  </body>
 </html>

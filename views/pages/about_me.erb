@@ -1,2 +1,7 @@
-<h1>About Me</h1>
-<p>My name is Dan.</p>
+<% unless @user==nil %>
+	<h1>About Me</h1>
+	<p>My name is <%= @user.name %></p>
+	<p>My email: <%= @user.email %></p>
+<% else %>
+	<h2><a href="/auth/login">Sign in please!</h2>
+<% end %>

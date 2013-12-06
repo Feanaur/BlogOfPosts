@@ -1,7 +1,12 @@
 <div class="container">
-  <div style="padding-top:5%;">
+  <div class="center">
     <form method="POST" action="/auth/login">
       <div class="col-lg-3">
+        <% unless flash[:error]==nil%>
+          <div class="alert alert-warning" id="flash">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
         <input type="text" id="email" class="span4 form-control" name="email" placeholder="Email"><br/><br/>
         <input type="password" id="password" class="span4 form-control" name="password" placeholder="Password"><br/><br/>
         <button type="submit" name="submit" class="btn btn-info btn-lg btn-block">Sign in</button>

@@ -12,6 +12,10 @@ module Sinatra
       request.path_info =~ /\/posts\/\d+$/
     end
 
+    def is_user_logged_on?
+      session[:user]!=nil
+    end
+
   end
  
   helpers Clear

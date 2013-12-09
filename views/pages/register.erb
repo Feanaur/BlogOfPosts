@@ -1,23 +1,32 @@
 <div class="container" style="padding-top:2%;">
   <form class="form-horizontal" id="registration" method='post' action='/register'>
     <div class="col-lg-3">
-
+        <% unless flash[:registration_error]==nil%>
+          <div class="alert alert-warning" id="flash">
+            <%= flash[:registration_error] %>
+          </div>
+        <% end %>
         <div class="r-control-group">
           <div class="controls">
-            <input type="text" class="form-control" placeholder="Username" id="username" name="username" >
+            <input type="text" class="form-control" placeholder="Username" id="user_name" name="user[name]" >
           </div>
         </div>
 
         <div class="r-control-group">
           <div class="controls">
-            <input type="password" class="form-control" placeholder="Password" id="password" name="password" >
+            <input type="password" class="form-control" placeholder="Password" id="user_password" name="user[password]" >
           </div>
         </div>
 
-        <!-- confirmation -->
         <div class="r-control-group">
           <div class="controls">
-            <input type="text" class="form-control" placeholder="Email" id="email" name="email" >
+            <input type="password" class="form-control" placeholder="Confirm password" id="user_password_confirmation" name="user[password_confirmation]" >
+          </div>
+        </div>
+
+        <div class="r-control-group">
+          <div class="controls">
+            <input type="text" class="form-control" placeholder="Email" id="user_email" name="user[email]" >
           </div>
         </div>
 

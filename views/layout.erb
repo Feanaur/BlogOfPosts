@@ -10,13 +10,16 @@
     <div class="navbar-inner navbar-fixed-top" style="background: white;">
       <ul class="nav nav-tabs">
         <li><a href="/">Home</a></li>
-        <li><a href="/about_me">About Me</a></li>            
-        <li><a href="/posts/new">New Post</a></li>
-        <li><a href="/register">Rеgister</a></li>
-        <% %> 
-        <li><a href="/auth/login">Sign in</a></li>                           
-        <% if post_show_page?  %>
-          <li><a href="/posts/<%= @post.id %>/edit">Edit Post</a></li>
+        <li><a href="/about_me">About Me</a></li>       
+        <% if is_user_logged_on? %>      
+          <li><a href="/posts/new">New Post</a></li>
+          <li><a href="/auth/logout">Sign out</a></li>
+          <% if post_show_page? && @post.user_id==session[:user].id  %>
+            <li><a href="/posts/<%= @post.id %>/edit">Edit Post</a></li>
+          <% end %>
+        <% else %>          
+          <li><a href="/register">Rеgister</a></li>
+          <li><a href="/auth/login">Sign in</a></li>                   
         <% end %>
       </ul>
     </div>

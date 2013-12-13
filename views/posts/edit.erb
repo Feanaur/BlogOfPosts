@@ -1,7 +1,7 @@
 <h1>Edit Post</h1>
 <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 
-<form action="/posts/<%= @post.id %>"  class="form-horizontal" method="post">
+<form action="/posts/<%= @post.id %>/edit"  class="form-horizontal" method="post">
   <input type="hidden" name="_method" value="put" />
   <div class="col-lg-10">
 
@@ -22,7 +22,7 @@
   </div>
 </form> 
 
-<form action="/posts/<%= @post.id %>"  class="form-horizontal" method="post">
+<form action="/posts/<%= @post.id %>/edit"  class="form-horizontal" method="post">
   <input type="hidden" name="_method" value="delete" />
   <div class="col-lg-10">
     <div class="control-group">

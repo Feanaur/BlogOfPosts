@@ -9,8 +9,8 @@ Dir.glob("./models/*.rb") do |rb_file|
   require "#{rb_file}"
 end
 
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/db/mydb') 
-#set :database, "sqlite3:///db/blog.sqlite3" #Перенести в yaml файл
+#ActiveRecord::Base.establish_connection(YAML.load(File.open("./db/config.yml"))) 
+set :database, "sqlite3:///db/blog.sqlite3" #Перенести в yaml файл
 set :sessions, true
 
 helpers Helper

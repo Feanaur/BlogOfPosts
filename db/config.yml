@@ -1,3 +1,15 @@
 development:
   adapter: postgresql
-  database: db/mydb
+  host: localhost
+  database: mydb
+  username: feanaur
+  password: password
+  pool: 5
+ 
+production:
+  adapter: postgresql
+  host: localhost
+  database: mydb
+  pool: 5
+  username: feanaur
+  password: password

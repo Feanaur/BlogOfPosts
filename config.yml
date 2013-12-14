@@ -1,6 +1,7 @@
 adapter: postgresql
 host: localhost
-database: mydb
-username: postgres
-password: pass
+database: d7ho5jeb8hvrv
+port:	5432
+username: qyozsndkfzicqt
+password: IyUWsWzkGuz0KEPglhhboFS82t
 pool: 5

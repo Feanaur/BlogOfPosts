@@ -4,11 +4,10 @@ gem "sinatra"
 gem "activerecord"
 gem "sinatra-activerecord"
 gem "session"
-gem "pg"
 gem "sinatra-flash"
 
 group :production do
-  gem 'pg' # this gem is required to use postgres on Heroku
+  gem "pg" # this gem is required to use postgres on Heroku
 end
 
 group :development do

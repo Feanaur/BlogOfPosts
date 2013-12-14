@@ -6,6 +6,14 @@
   padding:5px;
 }
 .center{
-	padding-top:0%;
 	padding-left:2%;
+}
+.navbar-inner{
+	background: white;
+}
+.list-group-item{
+	width:98%;
+}
+.pad-top{
+	padding-top:2%;
 }

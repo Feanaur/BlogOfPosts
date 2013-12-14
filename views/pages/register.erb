@@ -1,16 +1,14 @@
-<div class="container" style="padding-top:2%;"> <!-- !!!!!!!!!! -->
+<div class="container pad-top">
   <form class="form-horizontal" id="registration" method='post' action='/register'>
-
-    <div class="row">
-      <div class="col-lg-7">
+      <div class="col-md-7">
 
           <div class="r-control-group row">
-            <div class="controls col-lg-6">
+            <div class="controls col-md-6">
               <input type="text" class="form-control" placeholder="Username" id="user_name" name="user[name]" >
             </div>
             <% unless @user==nil %>
               <% unless @user.errors.[](:name).empty? %>
-                <div class="col-lg-5 alert alert-danger">
+                <div class="col-md-5 alert alert-danger">
                   <% @user.errors.[](:name).each do |err| %>
                     Name <%= "#{err}" %> 
                     </br>
@@ -21,12 +19,12 @@
           </div>
 
           <div class="r-control-group row">
-            <div class="controls col-lg-6">
+            <div class="controls col-md-6">
               <input type="password" class="form-control" placeholder="Password" id="user_password" name="user[password]" >
             </div>
             <% unless @user==nil %>          
               <% unless @user.errors.[](:password).empty? %>
-                <div class="col-lg-5 alert alert-danger">
+                <div class="col-md-5 alert alert-danger">
                   <% @user.errors.[](:password).each do |err| %>
                     Password <%= "#{err}" %> 
                     </br>
@@ -37,12 +35,12 @@
           </div>
 
           <div class="r-control-group row">
-            <div class="controls col-lg-6">
+            <div class="controls col-md-6">
               <input type="password" class="form-control" placeholder="Confirm password" id="user_password_confirmation" name="user[password_confirmation]">
             </div>
             <% unless @user==nil %>          
               <% unless @user.errors.[](:password_confirmation).empty? %>
-                <div class="col-lg-5 alert alert-danger">
+                <div class="col-md-5 alert alert-danger">
                   <% @user.errors.[](:password_confirmation).each do |err| %>
                     Confirmation <%= "#{err}" %> 
                     </br>
@@ -53,12 +51,12 @@
           </div>
 
           <div class="r-control-group row">
-            <div class="controls col-lg-6">
+            <div class="controls col-md-6">
               <input type="text" class="form-control" placeholder="Email" id="user_email" name="user[email]" >
             </div>
             <% unless @user==nil %>          
               <% unless @user.errors.[](:email).empty? %>
-                <div class="col-lg-5 alert alert-danger">
+                <div class="col-md-5 alert alert-danger">
                   <% @user.errors.[](:email).each do |err| %>
                     Email <%= "#{err}" %> 
                     </br>
@@ -70,12 +68,11 @@
 
           <div class="r-control-group row">
             <label class="control-label"></label>
-            <div class="controls col-lg-6">
+            <div class="controls col-md-6">
               <button type="submit" class="btn btn-info  btn-lg btn-block">Submit</button>
             </div>
           </div>
 
         </div>
-      </div>
   </form>
 </div>

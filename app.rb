@@ -99,7 +99,7 @@ end
  
 delete "/posts/:id/edit" do 
   @post = Post.find(params[:id])
-  if is_belong_to_user?(@post)
+  if is_belong_to_user?(@post.user)
     @post.destroy
     redirect "/"
   else
@@ -124,7 +124,7 @@ end
 
 delete "/posts/:id/comments/:comment_id" do
   @comment = Comment.find(params[:comment_id])
-  if is_belong_to_user?(@comment)
+  if is_belong_to_user?(@comment.user)
     @comment.destroy
     redirect "/posts/#{params[:id].to_s}"
   else

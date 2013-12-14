@@ -13,7 +13,7 @@ module Helper
   end
 
   def is_belong_to_user?(entity)
-    entity.user==session[:user]
+    entity.user_id==session[:user].id
   end
   
 end

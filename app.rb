@@ -79,7 +79,7 @@ end
 
 get "/posts/:id/edit" do 
   @post = Post.find(params[:id])
-  if is_belong_to_user?(@post.user)
+  if is_belong_to_user?(@post)
     erb :"posts/edit"
   else
     halt 403
@@ -88,7 +88,7 @@ end
 
 put "/posts/:id/edit" do 
   @post = Post.find(params[:id])
-  if @post.update_attributes(params[:post])||is_belong_to_user?(@post.user)
+  if @post.update_attributes(params[:post])||is_belong_to_user?(@post)
     redirect "/posts/#{@post.id}"
   else
     erb :"posts/edit"
@@ -97,7 +97,7 @@ end
  
 delete "/posts/:id/edit" do 
   @post = Post.find(params[:id])
-  if is_belong_to_user?(@post.user)
+  if is_belong_to_user?(@post)
     @post.destroy
     redirect "/"
   else
@@ -122,7 +122,7 @@ end
 
 delete "/posts/:id/comments/:comment_id" do
   @comment = Comment.find(params[:comment_id])
-  if is_belong_to_user?(@comment.user)
+  if is_belong_to_user?(@comment)
     @comment.destroy
     redirect "/posts/#{params[:id].to_s}"
   else

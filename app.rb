@@ -9,7 +9,8 @@ Dir.glob("./models/*.rb") do |rb_file|
   require "#{rb_file}"
 end
 
-ActiveRecord::Base.establish_connection(YAML.load(File.open("./config.yml"))) 
+#ActiveRecord::Base.establish_connection(YAML.load(File.open("./config.yml"))) 
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 #set :database, "postgresql:///db/blog" #Перенести в yaml файл
 set :sessions, true
 

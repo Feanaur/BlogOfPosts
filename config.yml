@@ -1,5 +1,5 @@
 adapter: postgresql
-host: localhost
+host: ec2-54-225-101-64.compute-1.amazonaws.com
 database: d7ho5jeb8hvrv
 port:	5432
 username: qyozsndkfzicqt

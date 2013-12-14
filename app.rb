@@ -9,8 +9,25 @@ Dir.glob("./models/*.rb") do |rb_file|
   require "#{rb_file}"
 end
 
+configure :development do
+  set :database, 'sqlite://blog.sqlite3'
+end
+ 
+configure :production do
+  # Database connection
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+ 
+  ActiveRecord::Base.establish_connection(
+    :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    :host     => db.host,
+    :username => db.user,
+    :password => db.password,
+    :database => db.path[1..-1],
+    :encoding => 'utf8'
+  )
+end
 #ActiveRecord::Base.establish_connection(YAML.load(File.open("./config.yml"))) 
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+#ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 #set :database, "postgresql:///db/blog" #Перенести в yaml файл
 set :sessions, true
 

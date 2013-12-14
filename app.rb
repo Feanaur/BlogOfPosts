@@ -26,9 +26,7 @@ configure :production do
     :encoding => 'utf8'
   )
 end
-#ActiveRecord::Base.establish_connection(YAML.load(File.open("./config.yml"))) 
-#ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-#set :database, "postgresql:///db/blog" #Перенести в yaml файл
+
 set :sessions, true
 
 helpers Helper
@@ -81,7 +79,7 @@ end
 
 get "/posts/:id/edit" do 
   @post = Post.find(params[:id])
-  if is_belong_to_user?(@post)
+  if is_belong_to_user?(@post.user)
     erb :"posts/edit"
   else
     halt 403
@@ -90,7 +88,7 @@ end
 
 put "/posts/:id/edit" do 
   @post = Post.find(params[:id])
-  if @post.update_attributes(params[:post])||is_belong_to_user?(@post)
+  if @post.update_attributes(params[:post])||is_belong_to_user?(@post.user)
     redirect "/posts/#{@post.id}"
   else
     erb :"posts/edit"

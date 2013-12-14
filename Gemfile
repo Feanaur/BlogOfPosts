@@ -4,8 +4,8 @@ gem "sinatra"
 gem "activerecord"
 gem "sinatra-activerecord"
 gem "session"
-#gem "pg"
-gem "sqlite3"
+gem "pg"
+#gem "sqlite3"
 gem "sinatra-flash"
 
 group :development do

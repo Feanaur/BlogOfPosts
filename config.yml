@@ -1,0 +1,6 @@
+adapter: postgresql
+host: localhost
+database: mydb
+username: postgres
+password: pass
+pool: 5

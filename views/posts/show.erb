@@ -14,10 +14,11 @@
         <div class="delete-comment-button">
           <form action="/posts/<%= @post.id %>/comments/<%= comment.id %>" method="post">
             <input type="hidden" name="_method" value="delete" />
-            <input class="btn btn-danger btn-delete btn-xs" type="submit" value="Delete" />
+            <button class="close" type="submit" value="Delete">&times;</button>
           </form>
         </div>
         <% end %>
+        </br>
       </div>
     </div>
     <br/>

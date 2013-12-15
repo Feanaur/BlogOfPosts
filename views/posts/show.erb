@@ -8,8 +8,8 @@
   <% @post.comments.each do |comment| %>
     <div class="row">
       <div class="col-xs-6 col-md-4 ">
-        <%= comment.body %> 
-        <p><em> by <%= comment.user.name %> at <%= comment.created_at %> </em><p>
+        <%= comment.body %>
+        <p class="pad-top"><em> by <%= comment.user.name %> at <%= comment.created_at %> </em><p>
         <% if @post.user==session[:user]||comment.user==session[:user] %>
         <div class="delete-comment-button">
           <form action="/posts/<%= @post.id %>/comments/<%= comment.id %>" method="post">

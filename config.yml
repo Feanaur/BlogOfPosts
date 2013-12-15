@@ -1,7 +1,16 @@
-adapter: postgresql
-host: ec2-54-225-101-64.compute-1.amazonaws.com
-database: d7ho5jeb8hvrv
-port:	5432
-username: qyozsndkfzicqt
-password: IyUWsWzkGuz0KEPglhhboFS82t
-pool: 5
+configure :development do
+  set :database, 'sqlite:///db/blog.sqlite3'
+end
+ 
+configure :production do
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+ 
+  ActiveRecord::Base.establish_connection(
+    :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    :host     => db.host,
+    :username => db.user,
+    :password => db.password,
+    :database => db.path[1..-1],
+    :encoding => 'utf8'
+  )
+end

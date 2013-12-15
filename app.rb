@@ -10,11 +10,10 @@ Dir.glob("./models/*.rb") do |rb_file|
 end
 
 configure :development do
-  set :database, 'sqlite://blog.sqlite3'
+  set :database, 'sqlite:///db/blog.sqlite3'
 end
  
 configure :production do
-  # Database connection
   db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
  
   ActiveRecord::Base.establish_connection(
@@ -26,6 +25,7 @@ configure :production do
     :encoding => 'utf8'
   )
 end
+#YAML::load( File.open( './config.yml' ) )
 
 set :sessions, true
 
@@ -116,7 +116,8 @@ post "/posts/:id/comments" do
   if @comment.save
     redirect "posts/#{@comment.post_id}"
   else
-    erb :"pages/show"
+    @post = @comment.post
+    erb :"posts/show"
   end
 end
 
@@ -145,6 +146,7 @@ post '/register' do
 end
 
 #SESSIONS
+
 get '/auth/login' do 
   erb :"/pages/login"   
 end

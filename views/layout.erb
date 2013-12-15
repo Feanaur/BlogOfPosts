@@ -7,7 +7,7 @@
     <title>My First Blog</title>
   </head>
   <body>
-    <div class="navbar-inner">
+    <nav class="navbar-default navbar-static-top" role="navigation">
       <ul class="nav nav-tabs">
         <li><a href="/">Home</a></li>  
         <% if is_user_logged_on? %>  
@@ -22,9 +22,9 @@
           <li class="pull-right"><a href="/register">Rеgister</a></li>
         <% end %>              
       </ul>
-    </div>
+    </nav>
 
-    <div class="center"> 
+    <div class="container"> 
       <%= yield %>
     </div>
   </body>

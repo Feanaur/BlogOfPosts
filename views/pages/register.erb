@@ -3,66 +3,122 @@
       <div class="col-md-7">
 
           <div class="r-control-group row">
-            <div class="controls col-md-6">
-              <input type="text" class="form-control" placeholder="Username" id="user_name" name="user[name]" >
-            </div>
-            <% unless @user==nil %>
-              <% unless @user.errors.[](:name).empty? %>
-                <div class="col-md-5 alert alert-danger">
-                  <% @user.errors.[](:name).each do |err| %>
-                    Name <%= "#{err}" %> 
-                    </br>
-                  <%end%>
+            <% if @user!=nil %>
+
+              <% if @user.errors.[](:name).empty? %>
+                <div class="controls col-md-6 has-success">
+                  <input type="text" class="form-control" placeholder="Username" id="user_name" name="user[name]" >
+                </div>
+              <% else %>
+
+                <div class="controls col-md-6 has-error">
+
+                  <label class="control-label" for="user_name">
+                    <% @user.errors.[](:name).each do |err| %>
+                      Name <%= "#{err}" %>.
+                    <%end%>
+                  </label> 
+
+                  <input type="text" class="form-control" placeholder="Username" id="user_name" name="user[name]" >
+
                 </div>
               <% end %>
+
+            <% else %>
+              <div class="controls col-md-6">
+                <input type="text" class="form-control" placeholder="Username" id="user_name" name="user[name]" >
+              </div>
             <% end %>
           </div>
 
           <div class="r-control-group row">
-            <div class="controls col-md-6">
-              <input type="password" class="form-control" placeholder="Password" id="user_password" name="user[password]" >
-            </div>
-            <% unless @user==nil %>          
-              <% unless @user.errors.[](:password).empty? %>
-                <div class="col-md-5 alert alert-danger">
-                  <% @user.errors.[](:password).each do |err| %>
-                    Password <%= "#{err}" %> 
-                    </br>
-                  <%end%>
+            <% if @user!=nil %>
+            
+              <% if @user.errors.[](:password).empty? %>
+
+                <div class="controls col-md-6 has-success">
+                  <input type="password" class="form-control" placeholder="Password" id="user_password" name="user[password]" >
+                </div>
+
+              <% else %>
+
+                <div class="controls col-md-6 has-error">
+
+                  <label class="control-label" for="user_password">
+                    <% @user.errors.[](:password).each do |err| %>
+                      Password <%= "#{err}" %>.
+                    <%end%>
+                  </label> 
+
+                  <input type="password" class="form-control" placeholder="Password" id="user_password" name="user[password]" >
+
                 </div>
               <% end %>
+
+            <% else %>
+
+              <div class="controls col-md-6">
+                <input type="password" class="form-control" placeholder="Password" id="user_password" name="user[password]" >
+              </div>
+
             <% end %>
           </div>
 
           <div class="r-control-group row">
-            <div class="controls col-md-6">
-              <input type="password" class="form-control" placeholder="Confirm password" id="user_password_confirmation" name="user[password_confirmation]">
-            </div>
-            <% unless @user==nil %>          
-              <% unless @user.errors.[](:password_confirmation).empty? %>
-                <div class="col-md-5 alert alert-danger">
-                  <% @user.errors.[](:password_confirmation).each do |err| %>
-                    Confirmation <%= "#{err}" %> 
-                    </br>
-                  <%end%>
+            <% if @user!=nil %>
+
+              <% if @user.errors.[](:password_confirmation).empty? %>
+                <div class="controls col-md-6 has-success">
+                  <input type="password" class="form-control" placeholder="Confirm password" id="user_password_confirmation" name="user[password_confirmation]" >
+                </div>
+              <% else %>
+
+                <div class="controls col-md-6 has-error">
+
+                  <label class="control-label" for="user_password_confirmation">
+                    <% @user.errors.[](:password_confirmation).each do |err| %>
+                      Confirmation <%= "#{err}" %>.
+                    <%end%>
+                  </label> 
+
+                  <input type="password" class="form-control" placeholder="Confirm password" id="user_password_confirmation" name="user[password_confirmation]" >
+
                 </div>
               <% end %>
+
+            <% else %>
+              <div class="controls col-md-6">
+                <input type="password" class="form-control" placeholder="Confirm password" id="user_password_confirmation" name="user[password_confirmation]" >
+              </div>
             <% end %>
           </div>
 
           <div class="r-control-group row">
-            <div class="controls col-md-6">
-              <input type="text" class="form-control" placeholder="Email" id="user_email" name="user[email]" >
-            </div>
-            <% unless @user==nil %>          
-              <% unless @user.errors.[](:email).empty? %>
-                <div class="col-md-5 alert alert-danger">
-                  <% @user.errors.[](:email).each do |err| %>
-                    Email <%= "#{err}" %> 
-                    </br>
-                  <%end%>
+            <% if @user!=nil %>
+
+              <% if @user.errors.[](:email).empty? %>
+                <div class="controls col-md-6 has-success">
+                  <input type="text" class="form-control" placeholder="Email" id="user_email" name="user[email]" >
+                </div>
+              <% else %>
+
+                <div class="controls col-md-6 has-error">
+
+                  <label class="control-label" for="user_name">
+                    <% @user.errors.[](:email).each do |err| %>
+                      Email <%= "#{err}" %>.
+                    <%end%>
+                  </label> 
+
+                  <input type="text" class="form-control" placeholder="Email" id="user_email" name="user[email]" >
+
                 </div>
               <% end %>
+
+            <% else %>
+              <div class="controls col-md-6">
+                <input type="text" class="form-control" placeholder="Email" id="user_email" name="user[email]" >
+              </div>
             <% end %>
           </div>
 
